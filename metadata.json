@@ -1,0 +1,5 @@
+{
+  "name": "Quizmaster",
+  "description": "An interactive quiz application where an AI Quizmaster tests your knowledge of worldwide language exams. Select a language and level, and answer randomized questions to see your score.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizmaster Quest</title>
+    <meta name="description" content="An interactive quiz application where an AI Quizmaster tests your knowledge of worldwide language exams. Select a language and level, and answer randomized questions to see your score.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="theme-color" id="theme-color-meta" content="#a2d2ff">
+    <style>
+      html {
+        overflow-x: hidden;
+      }
+      body {
+        background: linear-gradient(135deg, #a2d2ff 0%, #ffafcc 100%);
+        font-family: 'Nunito', sans-serif;
+        overflow-x: hidden;
+        transition: background 0.5s ease;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in {
+        animation: fadeIn 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+      }
+       @keyframes popIn {
+        0% { opacity: 0; transform: scale(0.95) translateY(10px); }
+        80% { opacity: 1; transform: scale(1.02) translateY(0); }
+        100% { opacity: 1; transform: scale(1) translateY(0); }
+      }
+      .animate-pop-in {
+        animation: popIn 0.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+      }
+      @keyframes confetti-fall {
+        0% { transform: translateY(-100vh) rotateZ(0deg); }
+        100% { transform: translateY(100vh) rotateZ(360deg); }
+      }
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: 0;
+        opacity: 0.7;
+        animation: confetti-fall 5s linear infinite;
+      }
+      /* --- New Gamification UI --- */
+      .clouds {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+        pointer-events: none;
+      }
+      .cloud {
+        position: absolute;
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA0MCI+PHBhdGggZD0iTTQ3LjcsMjAuM2MwLTUuNS00LjUtMTAtMTAtMTBjLTMuNywwLTcsMi04LjgsNWMtMC42LTIuNS0yLjgtNC4zLTUuNS00LjNjLTMuMSwwLTUuNywyLjUtNS43LDUuNyBjMCwwLjQsMCwwLjcsMC4xLDEuMUMxMS4zLDE4LjgsNiwyNC4xLDYsMzFjMCw0LjQsMy42LDgsOCw4aDI2YzUsMCw5LTQsOS05QzQ5LDI1LjYsNDcuNywyMC4zLDQ3LjcsMjAuM3oiIGZpbGw9IiNGRkZGRkYiLz48L3N2Zz4=');
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: 0.3;
+        transition: opacity 0.5s ease;
+      }
+      .cloud-1 { width: 200px; height: 120px; top: 10%; animation: cloud-move-left 35s linear infinite; }
+      .cloud-2 { width: 300px; height: 180px; top: 25%; animation: cloud-move-right 45s linear infinite; }
+      .cloud-3 { width: 150px; height: 90px; top: 60%; animation: cloud-move-left 55s linear infinite; }
+      .cloud-4 { width: 250px; height: 150px; top: 75%; animation: cloud-move-right 40s linear infinite; }
+      .cloud-5 { width: 180px; height: 110px; top: 45%; animation: cloud-move-right 60s linear infinite; }
+      .cloud-6 { width: 220px; height: 130px; top: 85%; animation: cloud-move-left 42s linear infinite; }
+
+      @keyframes cloud-move-left {
+        from { transform: translateX(110vw); }
+        to { transform: translateX(-300px); }
+      }
+      @keyframes cloud-move-right {
+        from { transform: translateX(-300px); }
+        to { transform: translateX(110vw); }
+      }
+
+      @keyframes float {
+        0% { transform: translate(0, 0px); }
+        50% { transform: translate(-5px, -15px); }
+        100% { transform: translate(0, 0px); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes shake {
+        0%, 100% { transform: translateX(0) scale(1.05); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px) scale(1.05); }
+        20%, 40%, 60%, 80% { transform: translateX(5px) scale(1.05); }
+      }
+      .animate-shake {
+        animation: shake 0.5s ease-in-out;
+      }
+
+      @keyframes bounce-custom {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0) scale(1.05); }
+        40% { transform: translateY(-15px) scale(1.05); }
+        60% { transform: translateY(-7px) scale(1.05); }
+      }
+      .animate-bounce-custom {
+        animation: bounce-custom 0.7s;
+      }
+      
+      @keyframes flash-bg {
+        0% { opacity: 0.3; }
+        50% { opacity: 0.5; }
+        100% { opacity: 0; }
+      }
+      .flash-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0;
+      }
+      .flash-overlay.active {
+        animation: flash-bg 0.5s ease-out;
+      }
+
+      /* --- Achievement Toast --- */
+      @keyframes toast-in-out {
+        0% { transform: translateX(120%); opacity: 0; }
+        15% { transform: translateX(0); opacity: 1; }
+        85% { transform: translateX(0); opacity: 1; }
+        100% { transform: translateX(120%); opacity: 0; }
+      }
+      .animate-toast-in-out {
+        animation: toast-in-out 4s ease-in-out forwards;
+      }
+
+      /* --- Profile Achievements --- */
+      .achievement-badge {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+      .achievement-badge .tooltip {
+        visibility: hidden;
+        opacity: 0;
+        width: 160px;
+        background-color: #3b82f6; /* Bright Blue */
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 8px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -80px;
+        transition: opacity 0.3s;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      }
+      .achievement-badge .tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #3b82f6 transparent transparent transparent; /* Match tooltip */
+      }
+      .achievement-badge:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.20.0",
+    "react-i18next": "https://aistudiocdn.com/react-i18next@^15.7.3"
+  }
+}
+</script>
+</head>
+  <body>
+    <div class="clouds">
+      <div class="cloud cloud-1"></div>
+      <div class="cloud cloud-2"></div>
+      <div class="cloud cloud-3"></div>
+      <div class="cloud cloud-4"></div>
+      <div class="cloud cloud-5"></div>
+      <div class="cloud cloud-6"></div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

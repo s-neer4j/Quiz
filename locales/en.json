@@ -1,0 +1,128 @@
+{
+  "common": {
+    "back": "Back",
+    "loading": "Loading...",
+    "or": "or",
+    "score": "Score",
+    "levels": "{count} Levels",
+    "active": "Active",
+    "added": "Added",
+    "status": "Status",
+    "langCode": "Lang Code",
+    "maxLevel": "Max Level"
+  },
+  "welcome": {
+    "title": "Welcome to Quizmaster Quest!",
+    "subtitle": "Ready to test your language skills?",
+    "signInGoogle": "Sign in with Google",
+    "signInApple": "Sign in with Apple",
+    "continuePhone": "Continue with Phone",
+    "continueEmail": "Continue with Email",
+    "simulatedLogin": "This is a simulated login. No real data is transmitted."
+  },
+  "modals": {
+    "googleTitle": "Choose an account",
+    "googleSubtitle": "to continue to Quizmaster Quest",
+    "appleTitle": "Sign in with Apple",
+    "appleSubtitle": "Use your Apple ID to sign in.",
+    "emailTitle": "Sign in with Email",
+    "emailSubtitle": "Enter your details below.",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
+    "signIn": "Sign In",
+    "phoneTitle": "Sign in with Phone",
+    "phoneSubtitleEnterNumber": "Enter your phone number to receive a code.",
+    "phoneLabel": "Phone Number",
+    "sendCode": "Send Code",
+    "phoneSubtitleEnterCode": "We've sent a code to your phone.",
+    "codeLabel": "Verification Code",
+    "verify": "Verify"
+  },
+  "avatar": {
+    "title": "Choose Your Avatar!",
+    "subtitle": "This will be your identity on the leaderboard.",
+    "confirm": "Confirm & Begin!"
+  },
+  "languages": {
+    "title": "Choose Your Challenge!",
+    "subtitle": "Select a language to begin your quiz adventure.",
+    "searchPlaceholder": "Search for a language...",
+    "noResults": "No languages found matching your search.",
+    "resumeTitle": "You have a quiz in progress!",
+    "resumeButton": "Resume Quiz"
+  },
+  "languageDetail": {
+    "back": "Back to Languages",
+    "title": "Language Details",
+    "startButton": "Start Quiz"
+  },
+  "setup": {
+    "title": "Ready, {userName}?",
+    "subtitle": "Let's set up your {languageName} quiz! 🚀",
+    "difficultyLabel": "Please select a difficulty:",
+    "difficultyPlaceholder": "-- Select Difficulty --",
+    "levelLabel": "Please select a level:",
+    "levelPlaceholder": "-- Select Level --",
+    "summary": "Perfect! I’ll prepare <1>{count}</1> random questions for your <3>{levelName}</3> quiz.",
+    "startButton": "Start Quiz 🎯"
+  },
+  "quiz": {
+    "question": "Question {current} / {total}",
+    "timeLeft": "Time left: {seconds} seconds",
+    "streak": "Streak",
+    "correctFeedback": "✅ Awesome, {userName}!",
+    "incorrectFeedback": "❌ Not quite. The correct answer is <1>{correctAnswer}</1>",
+    "nextButton": "Next Question",
+    "resultsButton": "See Results!"
+  },
+  "results": {
+    "title": "🎉 Well done, {userName}!",
+    "subtitle": "You completed the {level} {language} quiz.",
+    "finalScore": "Your Final Score:",
+    "longestStreak": "🔥 Longest Streak: {streak}",
+    "perfect": "Perfect score! You're a true master! 🏆",
+    "excellent": "Excellent work! You really know your stuff. ✨",
+    "good": "Good job! A little more practice and you'll be an expert. 👍",
+    "niceTry": "Nice try! Keep practicing and you'll improve. 🚀",
+    "playAgain": "Play Another Quiz"
+  },
+  "header": {
+    "home": "Home",
+    "mascot": "Quizmaster Mascot",
+    "leaderboard": "Leaderboard",
+    "history": "View History",
+    "profile": "Profile",
+    "unmute": "Unmute",
+    "mute": "Mute",
+    "logout": "Logout"
+  },
+  "history": {
+    "title": "📜 Quiz History 📜",
+    "noHistory": "You haven't completed any quizzes yet. Time to start your first challenge!"
+  },
+  "leaderboard": {
+    "title": "🏆 Leaderboard 🏆",
+    "you": "(You)",
+    "points": "{score} pts"
+  },
+  "profile": {
+    "title": "Your Profile",
+    "nameLabel": "Full Name",
+    "emailLabel": "Email Address",
+    "avatarLabel": "Choose Your Avatar",
+    "saveButton": "Save Changes",
+    "statsTitle": "Your Stats",
+    "achievementsTitle": "Achievements"
+  },
+  "profileStats": {
+    "totalQuizzes": "Total Quizzes",
+    "averageScore": "Average Score",
+    "highestScore": "Highest Score",
+    "longestStreak": "Longest Streak",
+    "favoriteLanguage": "Favorite Language",
+    "performanceTitle": "Performance by Difficulty"
+  },
+  "achievementToast": {
+    "title": "Achievement Unlocked!"
+  }
+}
